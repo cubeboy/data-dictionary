@@ -13,6 +13,8 @@ rails new back-end --api
 vue crate front-end
 vue add vuetify
 ```
-
+---
 ## User requirement
 - card-01 : When a word is searched, the meaning of the word and variables by language are searched.
+
+![ui-sketch](./document/ui-sketch.png "ui-sketch")
