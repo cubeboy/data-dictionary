@@ -4,7 +4,7 @@
     <v-menu offset-y>
       <template v-slot:activator="{ on }">
         <v-btn color="primary" dark v-on="on">
-         {{filter.title}}
+         {{category.title}}
         </v-btn>
       </template>
       <v-list>
@@ -20,7 +20,7 @@
 <script>
 export default {
   props: {
-    filter: {}
+    category: {}
   },
   data: () => ({
     items: [
