@@ -20,12 +20,7 @@ export default {
   props: {
     word: {}
   },
-  mounte () {
-    this.words = [
-      { word: '단어' },
-      { meaning: '뜻' },
-      { variables: [] }
-    ]
+  mounted () {
   }
 }
 </script>

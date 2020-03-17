@@ -29,14 +29,10 @@ import searchFilter from '@/components/SearchFilter.vue'
 export default {
   data: function () {
     return {
-      filters: [
-        { title: '대분류' },
-        { title: '중분류' },
-        { title: '소분류' }
-      ]
+      filters: []
     }
   },
-  mounte () {
+  mounted () {
     this.filters = [
       { title: '대분류' },
       { title: '중분류' },
