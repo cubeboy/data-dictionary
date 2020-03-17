@@ -35,12 +35,14 @@
 
       <v-container fluid class="grey lighten-4 fill-height">
         <v-row justify="center" align="center">
+          <SearchCard/>
         </v-row>
       </v-container>
   </v-app>
 </template>
 
 <script>
+import SearchCard from '@/components/SearchCard.vue'
 export default {
   props: {
     source: String
@@ -63,7 +65,10 @@ export default {
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
     ]
-  })
+  }),
+  components: {
+    SearchCard
+  }
 }
 </script>
 
