@@ -1,0 +1,2 @@
+class TermsWord < ApplicationRecord
+end

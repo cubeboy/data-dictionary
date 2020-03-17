@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  engName: MyString
+  shortEng: MyString
+  entity: MyString
+  column: MyString
+  class: MyString
+  classMember: MyString
+  paramValue: MyString
+
+two:
+  name: MyString
+  engName: MyString
+  shortEng: MyString
+  entity: MyString
+  column: MyString
+  class: MyString
+  classMember: MyString
+  paramValue: MyString

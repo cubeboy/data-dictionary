@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  description: MyText
+  type: 
+  typeSize: 1
+  mainCategoryId: MyString
+  middleCategoryId: MyString
+  subCategoryId: MyString
+
+two:
+  description: MyText
+  type: 
+  typeSize: 1
+  mainCategoryId: MyString
+  middleCategoryId: MyString
+  subCategoryId: MyString

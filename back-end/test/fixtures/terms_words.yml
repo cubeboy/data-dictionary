@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  termsId: 1
+  wordId: 1
+  seq: 1
+
+two:
+  termsId: 1
+  wordId: 1
+  seq: 1
