@@ -37,18 +37,28 @@
         <v-row justify="center" align="center">
           <SearchCard/>
         </v-row>
+        <v-row justify="center" align="center">
+            <div v-if="searchWord == null">
+              <h1> 검색을 진행하세요</h1>
+            </div>
+            <div v-else>
+              <ExplainCard :word='word'/>
+            </div>
+        </v-row>
       </v-container>
   </v-app>
 </template>
 
 <script>
 import SearchCard from '@/components/SearchCard.vue'
+import ExplainCard from '@/components/ExplainCard.vue'
 export default {
   props: {
     source: String
   },
   data: () => ({
     drawer: null,
+    searchWord: null,
     items: [
       { icon: 'lightbulb_outline', text: 'Notes' },
       { icon: 'touch_app', text: 'Reminders' },
@@ -64,10 +74,19 @@ export default {
       { icon: 'help', text: 'Help' },
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
-    ]
+    ],
+    word: {
+      word: '계좌 번호',
+      meaning: '은행 등에서 저축이나 대출 상황 등을 기록하고 관리하기 위해 고객에게 부여하는 식별 번호.',
+      variables: ['계좌 식별 번호', '개별 계좌 번호']
+    }
   }),
+  mounte () {
+    this.searchWord = this.$route.params.word
+  },
   components: {
-    SearchCard
+    SearchCard,
+    ExplainCard
   }
 }
 </script>
