@@ -22,7 +22,7 @@
 
 <script>
 import Category from '@/components/Category.vue'
-import commonCodeType from '../../services/categoryService'
+import commonCodeTypeService from '../../services/categoryService'
 export default {
   data: function () {
     return {
@@ -37,8 +37,15 @@ export default {
       { title: '중분류' },
       { title: '소분류' }
     ]
-    this.categoryItems = [
-    ]
+    commonCodeTypeService.getCommonCodeType()
+      .then(data => {
+        this.categoryItems = data
+      })
+      .catch(error => {
+        this.errored = true
+        console.log(error.message)
+      })
+      .finally(() => this.loading = false)
   },
   components: {
     Category
