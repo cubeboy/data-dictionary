@@ -1,7 +1,6 @@
 <template>
 <div>
     <div class="row" >
-
         <div style="text-align:center" id="filter">
             <h1>Search Filter</h1>
             <div class="row">
@@ -10,15 +9,12 @@
                 </span>
             </div>
         </div>
-
         <div id="search" style="margin-left:100px">
           <h1>Search Bar</h1>
-            <v-col cols="100" sm="20">
-          <v-text-field
-            label="Search Here"
-            outlined
-          ></v-text-field>
-        </v-col>
+          <div class="row">
+          <input v-model="message" placeholder="Type in Here">
+          <router-link :to=" '/' + message"><v-chip class="ma-2">Search</v-chip></router-link>
+          </div>
         </div>
     </div>
 </div>
@@ -29,7 +25,8 @@ import Category from '@/components/Category.vue'
 export default {
   data: function () {
     return {
-      categories: []
+      categories: [],
+      message: null
     }
   },
   mounted () {

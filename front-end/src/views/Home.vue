@@ -79,7 +79,7 @@ export default {
       id: null,
       word: '계좌 번호',
       meaning: '은행 등에서 저축이나 대출 상황 등을 기록하고 관리하기 위해 고객에게 부여하는 식별 번호.',
-      variables: ['계좌 식별 번호', '개별 계좌 번호']
+      variables: ['계좌', '번호']
     }
   }),
   mounted () {
