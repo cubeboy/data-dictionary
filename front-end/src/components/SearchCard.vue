@@ -12,8 +12,8 @@
         <div id="search" style="margin-left:100px">
           <h1>Search Bar</h1>
           <div class="row">
-          <input v-model="message" placeholder="Type in Here">
-          <router-link :to=" '/' + message"><v-chip class="ma-2">Search</v-chip></router-link>
+          <input v-model="word" placeholder="Type in Here">
+          <router-link :to=" '/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
           </div>
         </div>
     </div>
@@ -26,7 +26,7 @@ export default {
   data: function () {
     return {
       categories: [],
-      message: null
+      word: null
     }
   },
   mounted () {
