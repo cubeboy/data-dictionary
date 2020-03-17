@@ -39,10 +39,8 @@
         <v-row justify="center" align="center">
             <div v-if="searchWord == null">
               <h1>검색을 진행하세요</h1>
-              {{searchWord}}
             </div>
             <div v-else>
-              {{searchWord}}
               <DiscriptionCard :word='word'/>
             </div>
         </v-row>
