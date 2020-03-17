@@ -1,0 +1,2 @@
+class CommonCodeType < ApplicationRecord
+end
