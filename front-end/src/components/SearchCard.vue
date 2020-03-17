@@ -45,7 +45,6 @@ export default {
         this.errored = true
         console.log(error.message)
       })
-      .finally(() => this.loading = false)
   },
   components: {
     Category
