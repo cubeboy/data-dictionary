@@ -18,3 +18,7 @@ vue add vuetify
 - card-01 : When a word is searched, the meaning of the word and variables by language are searched.
 
 ![ui-sketch](./document/ui-sketch.png "ui-sketch")
+
+---
+## Entity
+![entity diagram](./document/entity-diagram.png "entity diagram")
