@@ -5,8 +5,8 @@
         <div style="text-align:center" id="filter">
             <h1>Search Filter</h1>
             <div class="row">
-                <span v-for='(filter, id) in filters' :key='id'>
-                    <searchFilter :filter="filter"/>
+                <span v-for='(category, id) in categories' :key='id'>
+                    <Category :category="category"/>
                 </span>
             </div>
         </div>
@@ -25,22 +25,22 @@
 </template>
 
 <script>
-import searchFilter from '@/components/SearchFilter.vue'
+import Category from '@/components/Category.vue'
 export default {
   data: function () {
     return {
-      filters: []
+      categories: []
     }
   },
   mounted () {
-    this.filters = [
+    this.categories = [
       { title: '대분류' },
       { title: '중분류' },
       { title: '소분류' }
     ]
   },
   components: {
-    searchFilter
+    Category
   }
 }
 </script>
