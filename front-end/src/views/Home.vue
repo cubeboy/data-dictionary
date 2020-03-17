@@ -32,16 +32,17 @@
         </template>
       </v-list>
     </v-navigation-drawer>
-
       <v-container fluid class="grey lighten-4 fill-height">
         <v-row justify="center" align="center">
           <SearchCard/>
         </v-row>
         <v-row justify="center" align="center">
             <div v-if="searchWord == null">
-              <h1> 검색을 진행하세요</h1>
+              <h1>검색을 진행하세요</h1>
+              {{searchWord}}
             </div>
             <div v-else>
+              {{searchWord}}
               <DiscriptionCard :word='word'/>
             </div>
         </v-row>
