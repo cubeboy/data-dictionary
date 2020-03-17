@@ -42,7 +42,7 @@
               <h1> 검색을 진행하세요</h1>
             </div>
             <div v-else>
-              <ExplainCard :word='word'/>
+              <DiscriptionCard :word='word'/>
             </div>
         </v-row>
       </v-container>
@@ -51,7 +51,7 @@
 
 <script>
 import SearchCard from '@/components/SearchCard.vue'
-import ExplainCard from '@/components/ExplainCard.vue'
+import DiscriptionCard from '@/components/DiscriptionCard.vue'
 export default {
   props: {
     source: String
@@ -87,7 +87,7 @@ export default {
   },
   components: {
     SearchCard,
-    ExplainCard
+    DiscriptionCard
   }
 }
 </script>
