@@ -11,7 +11,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/:word',
+    path: '/search/:word',
     name: 'Home',
     component: Home
   }

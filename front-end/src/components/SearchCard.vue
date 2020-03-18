@@ -13,7 +13,7 @@
           <h1>Search Bar</h1>
           <div class="row">
           <input v-model="word" placeholder="Type in Here">
-          <router-link :to=" '/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
+          <router-link :to=" '/search/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
           </div>
         </div>
     </div>
