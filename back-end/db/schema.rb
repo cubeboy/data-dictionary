@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_080510) do
     t.string "entity"
     t.string "column"
     t.string "javascript"
-    t.string "class"
-    t.string "classMember"
+    t.string "wordClass"
+    t.string "wordClassMember"
     t.string "paramValue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -6,8 +6,9 @@ one:
   shortEng: MyString
   entity: MyString
   column: MyString
-  class: MyString
-  classMember: MyString
+  javascript: MyString
+  wordClass: MyString
+  wordClassMember: MyString
   paramValue: MyString
 
 two:
@@ -16,6 +17,7 @@ two:
   shortEng: MyString
   entity: MyString
   column: MyString
-  class: MyString
-  classMember: MyString
+  javascript: MyString
+  wordClass: MyString
+  wordClassMember: MyString
   paramValue: MyString
