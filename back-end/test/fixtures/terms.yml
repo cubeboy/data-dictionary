@@ -2,16 +2,16 @@
 
 one:
   description: MyText
-  type: 
-  typeSize: 1
+  termType: MyString
+  termTypeSize: 1
   mainCategoryId: MyString
   middleCategoryId: MyString
   subCategoryId: MyString
 
 two:
   description: MyText
-  type: 
-  typeSize: 1
+  termType: MyString
+  termTypeSize: 1
   mainCategoryId: MyString
   middleCategoryId: MyString
   subCategoryId: MyString

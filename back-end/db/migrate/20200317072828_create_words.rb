@@ -6,8 +6,9 @@ class CreateWords < ActiveRecord::Migration[5.2]
       t.string :shortEng
       t.string :entity
       t.string :column
-      t.string :class
-      t.string :classMember
+      t.string :javascript
+      t.string :wordClass
+      t.string :wordClassMember
       t.string :paramValue
 
       t.timestamps

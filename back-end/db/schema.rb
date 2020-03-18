@@ -56,8 +56,9 @@ ActiveRecord::Schema.define(version: 2020_03_17_080510) do
     t.string "shortEng"
     t.string "entity"
     t.string "column"
-    t.string "class"
-    t.string "classMember"
+    t.string "javascript"
+    t.string "wordClass"
+    t.string "wordClassMember"
     t.string "paramValue"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
