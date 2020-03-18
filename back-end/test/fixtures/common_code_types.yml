@@ -1,9 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  engName: MyString
+  name: '금융'
+  engName: 'finance'
 
 two:
-  name: MyString
-  engName: MyString
+  name: '전자상거래'
+  engName: 'electronic commerce'
