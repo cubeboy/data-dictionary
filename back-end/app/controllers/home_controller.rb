@@ -1,5 +1,4 @@
 class HomeController < ApplicationController
-
   def index
     commonCodeTypes = []
     commonCodeTypes = CommonCodeType.all
