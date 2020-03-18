@@ -37,14 +37,6 @@ export default {
       { title: '중분류' },
       { title: '소분류' }
     ]
-    commonCodeTypeService.getCommonCodeType()
-      .then(data => {
-        this.categoryItems = data
-      })
-      .catch(error => {
-        this.errored = true
-        console.log(error.message)
-      })
   },
   components: {
     Category
