@@ -12,7 +12,7 @@ const routes = [
   },
   {
     path: '/search/:word',
-    name: 'Home',
+    name: 'Search',
     component: Home
   }
 ]

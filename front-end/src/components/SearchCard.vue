@@ -5,7 +5,7 @@
             <h1>Search Filter</h1>
             <div class="row">
                 <span v-for='(category, id) in categories' :key='id'>
-                    <Category :category="category"/>
+                    <Category :category="category"  :categoryItems='categoryItems'/>
                 </span>
             </div>
         </div>
@@ -22,11 +22,13 @@
 
 <script>
 import Category from '@/components/Category.vue'
+import commonCodeType from '../../services/categoryService'
 export default {
   data: function () {
     return {
       categories: [],
-      word: null
+      word: null,
+      categoryItems: []
     }
   },
   mounted () {
@@ -34,6 +36,8 @@ export default {
       { title: '대분류' },
       { title: '중분류' },
       { title: '소분류' }
+    ]
+    this.categoryItems = [
     ]
   },
   components: {

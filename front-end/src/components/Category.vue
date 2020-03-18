@@ -8,8 +8,8 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item v-for="(item, index) in items" :key="index">
-          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        <v-list-item v-for="(categoryItem, index) in categoryItems" :key="index">
+          <v-list-item-title>{{ categoryItem.title }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -20,15 +20,9 @@
 <script>
 export default {
   props: {
-    category: {}
+    category: {},
+    categoryItems: {}
   },
-  data: () => ({
-    items: [
-      { title: 'Click Me' },
-      { title: 'Click Me' },
-      { title: 'Click Me' },
-      { title: 'Click Me 2' }
-    ]
-  })
+  data: () => ({})
 }
 </script>
