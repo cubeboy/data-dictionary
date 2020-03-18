@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 2020_03_17_080510) do
 
   create_table "terms", force: :cascade do |t|
     t.text "description"
-    t.string "type"
-    t.integer "typeSize"
+    t.string "termType"
+    t.integer "termTypeSize"
     t.string "mainCategoryId"
     t.string "middleCategoryId"
     t.string "subCategoryId"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2020_03_17_080510) do
     t.string "shortEng"
     t.string "entity"
     t.string "column"
+    t.string "javascript"
     t.string "class"
     t.string "classMember"
     t.string "paramValue"
