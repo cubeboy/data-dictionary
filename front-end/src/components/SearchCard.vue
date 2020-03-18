@@ -22,7 +22,6 @@
 
 <script>
 import Category from '@/components/Category.vue'
-import commonCodeTypeService from '../../services/categoryService'
 export default {
   data: function () {
     return {

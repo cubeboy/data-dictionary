@@ -2,8 +2,8 @@ class CreateTerms < ActiveRecord::Migration[5.2]
   def change
     create_table :terms do |t|
       t.text :description
-      t.string :type
-      t.integer :typeSize
+      t.string :termType
+      t.integer :termTypeSize
       t.string :mainCategoryId
       t.string :middleCategoryId
       t.string :subCategoryId
