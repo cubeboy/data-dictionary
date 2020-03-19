@@ -12,6 +12,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal 2, commonCodeTypes.size
     assert_equal '금융', commonCodeTypes[0]['name']
+    
+    puts(commonCodeTypes)
   end
 
 end

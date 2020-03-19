@@ -1,18 +1,23 @@
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+import axios from 'axios'
 
-export default{
+export default {
 
-    getCommonCodeType() {
-        return new Promise((resolve, reject) => {
-            axios
-            .get('/')
-            .then(({data}) => {
-                resolve(data)
-            })
-            .catch(error => {
-                console.log(error)
-                reject(error)
-            })
-        })
-    }
+  async getCommonCodeType () {
+    return axios({
+      method: 'GET',
+      url: 'http://localhost:3000/'
+    })
+
+    // return new Promise((resolve, reject) => {
+    //   axios
+    //     .get('/')
+    //     .then(({ data }) => {
+    //       resolve(data)
+    //     })
+    //     .catch(error => {
+    //       console.log(error)
+    //       reject(error)
+    //     })
+    // })
+  }
 }

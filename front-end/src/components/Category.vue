@@ -8,8 +8,8 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item v-for="(categoryItem, index) in categoryItems" :key="index">
-          <v-list-item-title>{{ categoryItem.title }}</v-list-item-title>
+        <v-list-item v-for="(categoryItem, index) in category.items" :key="index">
+          <v-list-item-title @click="clickItem(categoryItem.name)" @select-category='setCategoryPath'>{{ categoryItem.name }}</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
@@ -21,8 +21,21 @@
 export default {
   props: {
     category: {},
-    categoryItems: {}
+    // categoryItems: {},
+    categoryPath: {}
   },
-  data: () => ({})
+  data: () => ({}),
+
+  methods: {
+    clickItem: function (name) {
+      this.category.title = name
+      // this.categoryPath.splice(index, 1, item)
+    },
+    setCategoryPath: function () {
+
+    }
+  },
+  mounted () {
+  }
 }
 </script>
