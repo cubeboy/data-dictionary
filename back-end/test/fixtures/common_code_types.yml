@@ -1,9 +1,16 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: '금융'
-  engName: 'finance'
+1st:
+  id: 1
+  name: '대분류'
+  engName: 'main'
 
-two:
-  name: '전자상거래'
-  engName: 'electronic commerce'
+2st:
+  id: 2
+  name: '중분류'
+  engName: 'middle'
+
+3st:
+  id: 3
+  name: '소분류'
+  engName: 'sub'
