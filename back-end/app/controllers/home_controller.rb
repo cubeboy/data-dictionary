@@ -1,9 +1,15 @@
 class HomeController < ApplicationController
   def index
-    commonCodeTypes = []
-    commonCodeTypes = CommonCodeType.all
+    typesAndMainCategories = []
+    typesAndMainCategories.push(CommonCodeType.getAllCodeTypes)
+    typesAndMainCategories.push(CommonCode.getMainCategories)
+    
+    # mainCategories = CommonCode.getMainCategories
 
-    render json: commonCodeTypes.to_json
+    # typesAndMainCategories = commonCodeTypes
+    # typesAndMainCategories.push(mainCategories)
+
+    render json: typesAndMainCategories.to_json
   end
 
   def show

@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CommonCodeTypeTest < ActiveSupport::TestCase
   test "Get All Code Types" do
-    codeTypes = CommonCodeType.getAllTypes
+    codeTypes = CommonCodeType.getAllCodeTypes
 
     assert_equal 3, codeTypes.size
 

@@ -10,8 +10,8 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
 
     commonCodeTypes = JSON.parse(@response.body)
 
-    assert_equal 3, commonCodeTypes.size
-    assert_equal '대분류', commonCodeTypes[0]['name']
+    assert_equal 2, commonCodeTypes.size
+    assert_equal '대분류', commonCodeTypes[0][0]['name']
     
     puts(commonCodeTypes)
   end
