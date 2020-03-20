@@ -2,25 +2,23 @@ require 'test_helper'
 
 class CommonCodeTest < ActiveSupport::TestCase
 
-  test "Get All Main Category" do
-    mainCategory = CommonCode.getMainCategories
+  test "Get Categories by Params" do
 
-    assert_equal 3, mainCategory.size
-    assert_equal '금융', mainCategory[0].name
-  end
+    params= {codeTypeId:1, parentId:0}
+    mainCategories1 = CommonCode.getCategoriesByParams(params)
 
-  test "Get Middle Category By Param" do
-    param = {mainId: 1}
-    middleCategory = CommonCode.getMiddleCategories(param)
+    mainCategories1.each do |category|
+      assert_equal 1, category[:codeTypeId]
+      assert_equal 0, category[:parentId]
+    end
 
-    assert_equal 3, middleCategory.size
-  end
+    params= {codeTypeId:2, parentId:1}
+    middleCategories = CommonCode.getCategoriesByParams(params)
 
-  test "Get Sub Category By Param" do
-    param = {middleId: 4}
-    subCategory = CommonCode.getSubCategories(param)
-
-    assert_equal 2, subCategory.size
+    middleCategories.each do |category|
+      assert_equal 2, category[:codeTypeId]
+      assert_equal 1, category[:parentId]
+    end
   end
 
 end

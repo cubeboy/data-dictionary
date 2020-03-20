@@ -34,7 +34,7 @@
     </v-navigation-drawer>
       <v-container fluid class="grey lighten-4 fill-height">
         <v-row justify="center" align="center">
-          <CategoryCard/><SearchCard/>
+          <SearchCard/>
         </v-row>
         <v-row justify="center" align="center">
             <div v-if="searchWord == null">
@@ -50,7 +50,6 @@
 
 <script>
 import SearchCard from '@/components/SearchCard.vue'
-import CategoryCard from '@/components/CategoryCard.vue'
 import DiscriptionCard from '@/components/DiscriptionCard.vue'
 export default {
   props: {
@@ -87,7 +86,6 @@ export default {
   },
   components: {
     SearchCard,
-    CategoryCard,
     DiscriptionCard
   }
 }

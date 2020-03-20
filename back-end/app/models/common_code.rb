@@ -1,16 +1,10 @@
 class CommonCode < ApplicationRecord
+    belongs_to :commonCodeType
 
-    def CommonCode.getMainCategories
-        mainCategory = CommonCode.select('id','codeTypeId','name','engName','engName')
-        .where('"codeTypeId"= 1')
+    def CommonCode.getCategoriesByParams(params)
+        categories = CommonCode.where('"codeTypeId"= :codeTypeId and "parentId" = :parentId',
+            codeTypeId: params[:codeTypeId], parentId: params[:parentId])
+            .order('name asc')
     end
 
-    def CommonCode.getMiddleCategories(param)
-        middleCategory = CommonCode.select('id','codeTypeId','name','engName','engName')
-                                .where('"codeTypeId"= 2 and "parentId"= :id', id: param[:mainId]).order('name asc')
-    end
-
-    def CommonCode.getSubCategories(param)
-        subCategory = CommonCode.where('"codeTypeId"= 3 and "parentId"= :id', id: param[:middleId]).order('name asc')
-    end
 end
