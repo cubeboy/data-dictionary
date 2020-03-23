@@ -1,17 +1,65 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  description: MyText
-  termType: MyString
-  termTypeSize: 1
-  mainCategoryId: MyString
-  middleCategoryId: MyString
-  subCategoryId: MyString
+1st:
+  id: 1
+  description: '계좌번호.'
+  termType: 'String'
+  mainCategoryId: 3
+  middleCategoryId: 1
 
-two:
-  description: MyText
-  termType: MyString
-  termTypeSize: 1
-  mainCategoryId: MyString
-  middleCategoryId: MyString
-  subCategoryId: MyString
+2st:
+  id: 2
+  description: '출금계좌.'
+  termType: 'String'
+  mainCategoryId: 3
+  middleCategoryId: 1
+  subCategoryId: 1
+
+3st:
+  id: 3
+  description: '입금계좌.'
+  termType: 'String'
+  mainCategoryId: 3
+  middleCategoryId: 1
+  subCategoryId: 1
+
+4st:
+  id: 4
+  description: '만기계좌.'
+  termType: 'String'
+  mainCategoryId: 2
+  middleCategoryId: 1
+  subCategoryId: 1
+
+5st:
+  id: 5
+  description: '계좌.'
+  termType: 'String'
+
+6st:
+  id: 6
+  description: '번호.'
+  termType: 'String'
+
+7st:
+  id: 7
+  description: '출금.'
+  termType: 'String'
+
+8st:
+  id: 8
+  description: '입금.'
+  termType: 'String'
+
+9st:
+  id: 9
+  description: '입금계좌번호.'
+  termType: 'String'
+  mainCategoryId: 3
+  middleCategoryId: 1
+  subCategoryId: 1
+
+10st:
+  id: 10
+  description: '만기.'
+  termType: 'String'

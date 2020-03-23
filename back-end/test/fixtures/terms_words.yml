@@ -1,11 +1,97 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+1st:
+  id: 1
   termsId: 1
   wordId: 1
   seq: 1
 
-two:
+2st:
+  id: 2
   termsId: 1
+  wordId: 2
+  seq: 2
+
+3st:
+  id: 3
+  termsId: 2
+  wordId: 3
+  seq: 1
+
+4st:
+  id: 4
+  termsId: 2
+  wordId: 1
+  seq: 2
+
+5st:
+  id: 5
+  termsId: 3
+  wordId: 4
+  seq: 1
+
+6st:
+  id: 6
+  termsId: 3
+  wordId: 1
+  seq: 2
+
+7st:
+  id: 7
+  termsId: 4
+  wordId: 5
+  seq: 1
+
+8st:
+  id: 8
+  termsId: 4
+  wordId: 1
+  seq: 2
+
+9st:
+  id: 9
+  termsId: 5
   wordId: 1
   seq: 1
+
+10st:
+  id: 10
+  termsId: 6
+  wordId: 2
+  seq: 1
+
+11st:
+  id: 11
+  termsId: 7
+  wordId: 3
+  seq: 1
+
+12st:
+  id: 12
+  termsId: 8
+  wordId: 4
+  seq: 1
+
+13st:
+  id: 13
+  termsId: 9
+  wordId: 4
+  seq: 1
+
+14st:
+  id: 14
+  termsId: 10
+  wordId: 5
+  seq: 1
+
+15st:
+  id: 15
+  termsId: 9
+  wordId: 1
+  seq: 2
+
+16st:
+  id: 16
+  termsId: 9
+  wordId: 2
+  seq: 3
