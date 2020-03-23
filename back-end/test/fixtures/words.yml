@@ -1,23 +1,61 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  engName: MyString
-  shortEng: MyString
-  entity: MyString
-  column: MyString
-  javascript: MyString
-  wordClass: MyString
-  wordClassMember: MyString
-  paramValue: MyString
+1st:
+  id: 1
+  name: '계좌'
+  engName: 'Account'
+  shortEng: 'Acc'
+  entity: 'T_Acc'
+  column: 'acc'
+  javascript: 'acc'
+  wordClass: 'Acc'
+  wordClassMember: 'acc'
+  paramValue: 'acc'
 
-two:
-  name: MyString
-  engName: MyString
-  shortEng: MyString
-  entity: MyString
-  column: MyString
-  javascript: MyString
-  wordClass: MyString
-  wordClassMember: MyString
-  paramValue: MyString
+2st:
+  id: 2
+  name: '번호'
+  engName: 'Number'
+  shortEng: 'Num'
+  entity: 'T_Num'
+  column: 'num'
+  javascript: 'num'
+  wordClass: 'Num'
+  wordClassMember: 'num'
+  paramValue: 'num'
+
+3st:
+  id: 3
+  name: '출금'
+  engName: 'Withdraw'
+  shortEng: 'Wit'
+  entity: 'T_Wit'
+  column: 'wit'
+  javascript: 'wit'
+  wordClass: 'Wit'
+  wordClassMember: 'wit'
+  paramValue: 'wit'
+
+4st:
+  id: 4
+  name: '입금'
+  engName: 'Deposit'
+  shortEng: 'Dep'
+  entity: 'T_Dep'
+  column: 'dep'
+  javascript: 'dep'
+  wordClass: 'Dep'
+  wordClassMember: 'dep'
+  paramValue: 'dep'
+
+5st:
+  id: 5
+  name: '만기'
+  engName: 'Maturity'
+  shortEng: 'Mat'
+  entity: 'T_Mat'
+  column: 'mat'
+  javascript: 'mat'
+  wordClass: 'Mat'
+  wordClassMember: 'mat'
+  paramValue: 'mat'
