@@ -1,92 +1,90 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 1st:
   id: 1
   codeTypeId: 1
   name: '뷰티'
-  engName: 'finance'
+  engName: 'beauty'
   parentId: 0
 
 2st:
   id: 2
   codeTypeId: 1
   name: '식품'
-  engName: 'electronic commerce'
+  engName: 'food'
   parentId: 0
 
 3st:
   id: 3
   codeTypeId: 2
   name: '건강식품'
-  engName: 'factory auto'
+  engName: 'health food'
   parentId: 2
 
 4st:
   id: 4
   codeTypeId: 2
   name: '스킨케어'
-  engName: 'bank'
+  engName: 'skin care'
   parentId: 1
 
 5st:
   id: 5
   codeTypeId: 2
   name: '메이크업'
-  engName: 'insurance'
+  engName: 'makeup'
   parentId: 1
 
 6st:
   id: 6
   codeTypeId: 2
   name: '향수'
-  engName: 'card'
+  engName: 'perfume'
   parentId: 1
 
 7st:
   id: 7
   codeTypeId: 2
   name: '과일'
-  engName: 'Gmarket'
+  engName: 'fruit'
   parentId: 2
 
 8st:
   id: 8
   codeTypeId: 2
   name: '채소'
-  engName: 'auction'
+  engName: 'vegetable'
   parentId: 2
 
 9st:
   id: 9
   codeTypeId: 3
   name: '영양제'
-  engName: 'credit'
+  engName: 'nutrients'
   parentId: 3
 
 10st:
   id: 10
   codeTypeId: 3
   name: '기초화장품'
-  engName: 'reception'
+  engName: 'basic cosmetics'
   parentId: 4
 
 11st:
   id: 11
   codeTypeId: 3
   name: '클랜징'
-  engName: 'e-bank'
+  engName: 'cleansing'
   parentId: 4
 
 12st:
   id: 12
   codeTypeId: 3
   name: '아이 메이크업'
-  engName: 'life insurance'
+  engName: 'eye makeup'
   parentId: 5
 
 13st:
   id: 13
   codeTypeId: 3
   name: '립 메이크업'
-  engName: 'driver insurance'
+  engName: 'lip makeup'
   parentId: 5

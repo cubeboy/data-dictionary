@@ -7,7 +7,7 @@ export default {
       method: 'GET',
       url: 'http://localhost:3000/common_code/',
       params: {
-        codeTypeId: queryParams.codeTypeId,
+        // codeTypeId: queryParams.codeTypeId,
         id: queryParams.id
       }
     })
