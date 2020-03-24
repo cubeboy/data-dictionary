@@ -1,9 +1,14 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+1st:
+  id: 1
+  name: '대분류'
+  engName: 'main'
 
-one:
-  name: MyString
-  engName: MyString
+2st:
+  id: 2
+  name: '중분류'
+  engName: 'middle'
 
-two:
-  name: MyString
-  engName: MyString
+3st:
+  id: 3
+  name: '소분류'
+  engName: 'sub'
