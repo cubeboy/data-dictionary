@@ -12,7 +12,6 @@
           >
         </v-combobox>
       </v-col>
-      {{selectedCategory1}}
     </div>
   </span>
 </template>
@@ -23,7 +22,7 @@ import commonCodeService from '../../services/commonCodeService'
 export default {
   props: {
     codeType: {},
-    selectedCategory1: {} // 초기 codeTypeId:0, parentId:0
+    parentItem: {}
   },
   data: () => ({
     selectedCategory: null,
@@ -31,14 +30,13 @@ export default {
   }),
   watch: {
     selectedCategory: function () {
-      this.ss()
+      this.selctItem()
     }
   },
   async mounted () {
     try {
-      if ((this.selectedCategory1.codeTypeId + 1) === this.codeType.id) {
-        this.selectedCategory1.codeTypeId += 1
-        const respCommonCode = await commonCodeService.getCategories(this.selectedCategory1)
+      if (this.codeType.id === 1) {
+        const respCommonCode = await commonCodeService.getCategories(this.parentItem)
         this.items = respCommonCode.data
       }
     } catch (error) {
@@ -48,9 +46,9 @@ export default {
     }
   },
   methods: {
-    ss: function () {
-      this.$emit('ss', this.selectedCategory)
-      alert(this.codeType.id + '데이터 전달')
+    selctItem: function () {
+      this.$emit('conveySelectedItem')
+      alert('category vue')
     }
   }
 }
