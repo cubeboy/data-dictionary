@@ -2,7 +2,7 @@
   <v-app id="keep">
     <v-app-bar app clipped-left color="amber">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <div class="title ml-3 mr-5 align-center justify-center">용어검색</div>
+      <div class="title ml-3 mr-5 align-center justify-center">단어검색</div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
