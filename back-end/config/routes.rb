@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   # get 'word/index'
   # root 'word#index'
 
-  resources :word
+  resources :word :common_code
 end
