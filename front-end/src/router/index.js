@@ -11,7 +11,7 @@ const routes = [
     component: Home
   },
   {
-    path: '/common_code/:word',
+    path: '/search/:word',
     name: 'Search',
     component: Home
   }
