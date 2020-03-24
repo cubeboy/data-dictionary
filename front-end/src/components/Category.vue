@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     selectItem: function () {
-      this.$emit('conveySelectedItem', this.selectedCategory)
+      this.$emit('conveySelectedItem')
       alert('데이터 전달')
     }
   }
