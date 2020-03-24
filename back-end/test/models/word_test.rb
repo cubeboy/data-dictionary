@@ -5,9 +5,9 @@ class WordTest < ActiveSupport::TestCase
   searchEncName = "thdr"
   searchId = 2
 
-  test "save blank, nil vaildates" do
-    word = Word.new({
-      name: '',
+  def getTestWord
+    return Word.new({
+      name: '계좌',
       engName: 'Account',
       shortEng: 'Acc',
       entity: 'T_Acc',
@@ -17,117 +17,51 @@ class WordTest < ActiveSupport::TestCase
       wordClassMember: 'acc',
       paramValue: 'acc',
     })
+  end
+
+  test "save blank, nil vaildates" do
+    word = self.getTestWord
+    word[:name] = nil
     assert !word.save, 'Save Validates word name Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - name'
 
-    word = Word.new({
-      name: '계좌',
-      engName: '',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:engName] = nil
     assert !word.save, 'Save Validates word engName Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - engName'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: '',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:shortEng] = nil
     assert !word.save, 'Save Validates word shortEng Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - shortEng'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: '',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:entity] = nil
     assert !word.save, 'Save Validates word entity Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - entity'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:column] = nil
     assert !word.save, 'Save Validates word column Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - column'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: '',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:javascript] = nil
     assert !word.save, 'Save Validates word javascript Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - javascript'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: '',
-      wordClassMember: 'acc',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:wordClass] = nil
     assert !word.save, 'Save Validates wordClass javascript Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - wordClass'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: '',
-      paramValue: 'acc',
-    })
+    word = self.getTestWord
+    word[:wordClassMember] = nil
     assert !word.save, 'Save Validates wordClassMember javascript Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - wordClassMember'
 
-    word = Word.new({
-      name: '계좌',
-      engName: 'Account',
-      shortEng: 'Acc',
-      entity: 'T_Acc',
-      column: 'acc',
-      javascript: 'acc',
-      wordClass: 'Acc',
-      wordClassMember: 'acc',
-      paramValue: '',
-    })
+    word = self.getTestWord
+    word[:paramValue] = nil
     assert !word.save, 'Save Validates paramValue javascript Fail'
     assert_equal 1, word.errors.size , 'Validates Fail - paramValue'
   end
@@ -183,12 +117,8 @@ class WordTest < ActiveSupport::TestCase
 
   test "Search Word all" do
     words = Word.all
-    assert words.size > 0, 'Search Word all - searchKorName data nil'
-    assert_equal Word.all.size, words.size, 'Search Word all - searchKorName size Fail'
-
-    words = Word.all
-    assert words.size > 0, 'Search Word all - searchEncName data nil'
-    assert_equal Word.all.size, words.size, 'Search Word all - searchEncName size Fail'
+    assert words.size > 0, 'Search Word all - data nil'
+    assert_equal Word.all.size, words.size, 'Search Word all - size Fail'
   end
 
   test "Search Word method getWords wordParam" do

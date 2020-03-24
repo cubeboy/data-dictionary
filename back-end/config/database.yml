@@ -12,10 +12,10 @@ default: &default
 
 development:
   <<: *default
-  database: dataDictionaryTest
-  username: postgres
-  password: 1234
-  host: localhost
+  database: dataDictionaryDev
+  username: cpst
+  password: cpst0306
+  host: sephora.cq3ailyaynzs.ap-northeast-2.rds.amazonaws.com
   port: 5432
 
 # Warning: The database defined as "test" will be erased and
