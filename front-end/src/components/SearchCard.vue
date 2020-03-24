@@ -10,7 +10,7 @@
         <div>
           <h1>Search</h1>
         <input v-model="word" placeholder="Type in Here">
-        <router-link :to=" '/search/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
+        <router-link :to=" '/common_code/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
         </div>
       </div>
     </div>
@@ -45,8 +45,9 @@ export default {
     Category
   },
   methods: {
-    conveySelectedItem: function () {
+    conveySelectedItem () {
       alert('데이터 받음')
+      console.log('고맙다. 잘 쓰겠다.')
     }
   }
 }

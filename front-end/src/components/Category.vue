@@ -9,6 +9,7 @@
           item-value="id"
           :label="codeType.name"
           return-object
+          @change="selectItem"
           >
         </v-combobox>
       </v-col>
@@ -22,17 +23,12 @@ import commonCodeService from '../../services/commonCodeService'
 export default {
   props: {
     codeType: {},
-    parentItem: {} // 초기 codeTypeId:0, parentId:0
+    parentItem: {}
   },
   data: () => ({
     selectedCategory: null,
     items: []
   }),
-  watch: {
-    selectedCategory: function () {
-      this.selectItem()
-    }
-  },
   async mounted () {
     try {
       if (this.codeType.id === 1) {
@@ -46,9 +42,9 @@ export default {
     }
   },
   methods: {
-    selectItem: function () {
+    selectItem () {
       this.$emit('conveySelectedItem')
-      alert('데이터 전달')
+      console.log('부모님, 받으십시오.')
     }
   }
 }
