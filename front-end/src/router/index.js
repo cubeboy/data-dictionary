@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Term from '../views/SearchTerms.vue'
 
 Vue.use(VueRouter)
 
@@ -11,9 +12,9 @@ const routes = [
     component: Home
   },
   {
-    path: '/term/:word',
-    name: 'Search',
-    component: Home
+    path: '/term/',
+    name: 'SearchTerm',
+    component: Term
   }
 ]
 

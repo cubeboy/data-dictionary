@@ -9,8 +9,8 @@ class Term < ApplicationRecord
     end
 
     def Term.findByTerms params
-        whereColumn = Term.createWhereColumn(params[:category])
-        whereValues = Term.createWhereValue(params[:category])
+        whereColumn = Term.createWhereColumn(params)
+        whereValues = Term.createWhereValue(params)
         terms = Term.select('terms.*, \'\' as "name", \'\' as "engName", \'\' as "shortEng", \'\' as "entity", \'\' as "column",
             \'\' as "javascript", \'\' as "wordClass", \'\' as "wordClassMember", \'\' as "paramValue"').
           where(whereColumn, whereValues)
@@ -18,6 +18,7 @@ class Term < ApplicationRecord
 
     def Term.createWhereColumn params
         whereStrings = []
+
         params.each do |column, val|
           if val != nil && val != ""
             whereStrings.push Term.public_send(val[:operator].to_sym, column)
@@ -30,7 +31,7 @@ class Term < ApplicationRecord
         vals = {}
         params.each do |column, val|
           if val[:value] != nil && val[:value] != ""
-            vals[column.to_sym] = val[:value]
+            vals[column.to_sym] = val[:value].to_s
           end
         end
         return vals

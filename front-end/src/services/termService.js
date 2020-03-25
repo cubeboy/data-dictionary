@@ -2,11 +2,11 @@ import axios from 'axios'
 
 export default {
 
-  async getTerms (quaryParams) {
+  async getTermInfo (params) {
     return axios({
-      method: "GET",
+      method: 'GET',
       url: 'http://localhost:3000/term',
-      params: { params: quaryParams }
+      params: params
     })
   }
 }

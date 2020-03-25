@@ -15,16 +15,16 @@ class TermTest < ActiveSupport::TestCase
     end
   end
 
-  test "terms join words Categroy 조회 테스트" do
-    params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'}, subCategoryId: {operator: 'equalOrNull', value: '1'}}}
-    terms = Term.findByTerms params
+  # test "terms join words Categroy 조회 테스트" do
+  #   params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'}, subCategoryId: {operator: 'equalOrNull', value: '1'}}}
+  #   terms = Term.findByTerms params
 
-    terms.each do |term|
-      assert '3' == term.mainCategoryId || '' == term.mainCategoryId || nil == term.mainCategoryId, "not match mainCategoryId"
-      assert '1' == term.middleCategoryId || '' == term.middleCategoryId || nil == term.middleCategoryId, "not match middleCategoryId"
-      assert '1' == term.subCategoryId || '' == term.subCategoryId || nil == term.subCategoryId, "not match subCategoryId"
-    end
-  end
+  #   terms.each do |term|
+  #     assert '3' == term.mainCategoryId || '' == term.mainCategoryId || nil == term.mainCategoryId, "not match mainCategoryId"
+  #     assert '1' == term.middleCategoryId || '' == term.middleCategoryId || nil == term.middleCategoryId, "not match middleCategoryId"
+  #     assert '1' == term.subCategoryId || '' == term.subCategoryId || nil == term.subCategoryId, "not match subCategoryId"
+  #   end
+  # end
 
   test "class 변수 조합하기" do
     param = {id: 1}
@@ -41,36 +41,36 @@ class TermTest < ActiveSupport::TestCase
     assert_equal "AccountNumber", terms[0].engName, "not match engName"
   end
 
-  test "복합단어 검색 테스트" do
-    searchKorName = "좌번"
-    searchEncName = "ountnumb"
+  # test "복합단어 검색 테스트" do
+  #   searchKorName = "좌번"
+  #   searchEncName = "ountnumb"
 
-    params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'},
-                          subCategoryId: {operator: 'equalOrNull', value: '1'}},
-                searchVal: searchEncName }
-    terms = Term.findByTerms params
-    termParams = []
-    terms.each do |term|
-      term.getTerms
-      if (term.name.upcase.include? params[:searchVal].upcase) || (term.engName.upcase.include? params[:searchVal].upcase)
-        termParams.push(term.clone)
-      end
-    end
-    assert (termParams[0].name.upcase.include? searchEncName.upcase) ||  (termParams[0].engName.upcase.include? searchEncName.upcase), "not match searchEncName"
+  #   params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'},
+  #                         subCategoryId: {operator: 'equalOrNull', value: '1'}},
+  #               searchVal: searchEncName }
+  #   terms = Term.findByTerms params
+  #   termParams = []
+  #   terms.each do |term|
+  #     term.getTerms
+  #     if (term.name.upcase.include? params[:searchVal].upcase) || (term.engName.upcase.include? params[:searchVal].upcase)
+  #       termParams.push(term.clone)
+  #     end
+  #   end
+  #   assert (termParams[0].name.upcase.include? searchEncName.upcase) ||  (termParams[0].engName.upcase.include? searchEncName.upcase), "not match searchEncName"
 
-    params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'},
-                          subCategoryId: {operator: 'equalOrNull', value: '1'}},
-                searchVal: searchKorName }
-    terms = Term.findByTerms params
-    termParams = []
-    terms.each do |term|
-      term.getTerms
-      if (term.name.upcase.include? params[:searchVal].upcase) || (term.engName.upcase.include? params[:searchVal].upcase)
-        termParams.push(term.clone)
-      end
-    end
-    assert (termParams[0].name.upcase.include? searchKorName.upcase) ||  (termParams[0].engName.upcase.include? searchKorName.upcase), "not match searchEncName"
-  end
+  #   params = { category: {mainCategoryId: {operator: 'equalOrNull', value: '3'}, middleCategoryId: {operator: 'equalOrNull', value: '1'},
+  #                         subCategoryId: {operator: 'equalOrNull', value: '1'}},
+  #               searchVal: searchKorName }
+  #   terms = Term.findByTerms params
+  #   termParams = []
+  #   terms.each do |term|
+  #     term.getTerms
+  #     if (term.name.upcase.include? params[:searchVal].upcase) || (term.engName.upcase.include? params[:searchVal].upcase)
+  #       termParams.push(term.clone)
+  #     end
+  #   end
+  #   assert (termParams[0].name.upcase.include? searchKorName.upcase) ||  (termParams[0].engName.upcase.include? searchKorName.upcase), "not match searchEncName"
+  # end
 
   test "또다른 test" do
 

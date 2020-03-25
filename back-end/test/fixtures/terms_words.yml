@@ -95,3 +95,21 @@
   termsId: 9
   wordId: 2
   seq: 3
+
+17st:
+  id: 17
+  termsId: 11
+  wordId: 6
+  seq: 1
+
+18st:
+  id: 18
+  termsId: 12
+  wordId: 9
+  seq: 1
+
+19st:
+  id: 19
+  termsId: 12
+  wordId: 8
+  seq: 2

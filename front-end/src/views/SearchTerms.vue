@@ -34,33 +34,26 @@
     </v-navigation-drawer>
       <v-container fluid class="grey lighten-4 fill-height">
         <v-row justify="center" align="center">
-          <SearchCard/>
+          <SearchCard />
         </v-row>
         <v-row justify="center" align="center">
-          <v-data-table :headers="headers" :items="words" :items-per-page="5" class="elevation-1"></v-data-table>
         </v-row>
-        <v-row justify="center" align="center">
-            <div v-if="searchWord == null">
-              <h1>검색을 진행하세요</h1>
-            </div>
-            <div v-else>
-              <DiscriptionCard :word='word'/>
-            </div>
-        </v-row>
+        <!-- <v-row justify="center" align="center">
+          <DiscriptionCard/>
+        </v-row> -->
       </v-container>
   </v-app>
 </template>
 
 <script>
 import SearchCard from '@/components/SearchCard.vue'
-import DiscriptionCard from '@/components/DiscriptionCard.vue'
+// import DiscriptionCard from '@/components/DiscriptionCard.vue'
 export default {
   props: {
     source: String
   },
   data: () => ({
-    drawer: null,
-    searchWord: null,
+    drawer: false,
     items: [
       { icon: 'lightbulb_outline', text: 'Notes' },
       { icon: 'touch_app', text: 'Reminders' },
@@ -76,36 +69,10 @@ export default {
       { icon: 'help', text: 'Help' },
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
-    ],
-    word: {
-      id: null,
-      word: '계좌 번호',
-      meaning: '은행 등에서 저축이나 대출 상황 등을 기록하고 관리하기 위해 고객에게 부여하는 식별 번호.',
-      variables: ['계좌', '번호']
-    },
-    headers: [
-      {
-        text: '한글명',
-        align: 'start',
-        sortable: true,
-        value: 'name'
-      },
-      { text: 'Eng', value: 'engName' },
-      { text: 'short-Eng', value: 'shortEng' },
-      { text: 'Entity', value: 'entity' },
-      { text: 'Column', value: 'column' },
-      { text: 'javascript', value: 'javascript' },
-      { text: 'class', value: 'wordClass' },
-      { text: 'class member', value: 'WordClassMember' },
-      { text: 'param value', value: 'paramValue' }
     ]
   }),
-  mounted () {
-    this.searchWord = this.$route.params.word
-  },
   components: {
-    SearchCard,
-    DiscriptionCard
+    SearchCard
   }
 }
 </script>

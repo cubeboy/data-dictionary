@@ -2,7 +2,7 @@
   <v-app id="keep">
     <v-app-bar app clipped-left color="amber">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <div class="title ml-3 mr-5 align-center justify-center">용어검색</div>
+      <div class="title ml-3 mr-5 align-center justify-center">메인화면</div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
@@ -33,27 +33,18 @@
       </v-list>
     </v-navigation-drawer>
       <v-container fluid class="grey lighten-4 fill-height">
-        <v-row justify="center" align="center">
-          <SearchCard />
-        </v-row>
-        <v-row justify="center" align="center">
 
-        </v-row>
         <v-row justify="center" align="center">
-            <div v-if="searchWord == null">
-              <h1>검색을 진행하세요</h1>
-            </div>
-            <div v-else>
-              <DiscriptionCard :word='word'/>
-            </div>
+          <router-link :to="'/term'">
+          <v-btn class="ma-2" outlined color="indigo">용어검색 Go</v-btn>
+          </router-link>
         </v-row>
+
       </v-container>
   </v-app>
 </template>
 
 <script>
-import SearchCard from '@/components/SearchCard.vue'
-import DiscriptionCard from '@/components/DiscriptionCard.vue'
 export default {
   props: {
     source: String
@@ -76,21 +67,8 @@ export default {
       { icon: 'help', text: 'Help' },
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
-    ],
-    word: {
-      id: null,
-      word: '계좌 번호',
-      meaning: '은행 등에서 저축이나 대출 상황 등을 기록하고 관리하기 위해 고객에게 부여하는 식별 번호.',
-      variables: ['계좌', '번호']
-    }
-  }),
-  mounted () {
-    this.searchWord = this.$route.params.word
-  },
-  components: {
-    SearchCard,
-    DiscriptionCard
-  }
+    ]
+  })
 }
 </script>
 

@@ -1,12 +1,14 @@
 class TermController < ApplicationController
     def index
         terms = []
+
         if(params[:category])
             begin
-                termParam = JSON.parse(params, {symbolize_names: true})
+                termParam = JSON.parse(params[:category], {symbolize_names: true})
             rescue
-                termParam = params
+                termParam = params[:category]
             end
+
             terms = Term.findByTerms termParam
 
             termParams = []

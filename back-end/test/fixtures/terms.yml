@@ -4,14 +4,14 @@
   id: 1
   description: '계좌번호.'
   termType: 'String'
-  mainCategoryId: 3
+  mainCategoryId: 1
   middleCategoryId: 1
 
 2st:
   id: 2
   description: '출금계좌.'
   termType: 'String'
-  mainCategoryId: 3
+  mainCategoryId: 1
   middleCategoryId: 1
   subCategoryId: 1
 
@@ -19,7 +19,7 @@
   id: 3
   description: '입금계좌.'
   termType: 'String'
-  mainCategoryId: 3
+  mainCategoryId: 1
   middleCategoryId: 1
   subCategoryId: 1
 
@@ -55,7 +55,7 @@
   id: 9
   description: '입금계좌번호.'
   termType: 'String'
-  mainCategoryId: 3
+  mainCategoryId: 2
   middleCategoryId: 1
   subCategoryId: 1
 
@@ -63,3 +63,18 @@
   id: 10
   description: '만기.'
   termType: 'String'
+
+11st:
+  id: 11
+  description: '향수.'
+  termType: 'String'
+  mainCategoryId: 1
+  middleCategoryId: 6
+
+12st:
+  id: 12
+  description: '건강식품.'
+  termType: 'String'
+  mainCategoryId: 2
+  middleCategoryId: 3
+  subCategoryId: 9
