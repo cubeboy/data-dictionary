@@ -12,11 +12,6 @@ const routes = [
     component: Home
   },
   {
-    path: '/common_code/:word',
-    name: 'Search',
-    component: Home
-  },
-  {
     path: '/word/',
     name: 'Word',
     component: Word

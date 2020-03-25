@@ -1,7 +1,7 @@
 class WordController < ApplicationController
     def index
         words = []
-        if(params)
+        if(params[:word])
             begin
                 wordParam = JSON.parse(params, {symbolize_names: true})
             rescue
