@@ -1,46 +1,40 @@
 <template>
   <span>
-    <div class="text-center">
-      <v-col cols="8">
-        <v-combobox
-          v-model="selectedCategory"
-          :items="items"
-          item-text="name"
-          item-value="id"
-          :label="codeType.name"
-          return-object
-          >
-        </v-combobox>
-      </v-col>
-      {{selectedCategory1}}
-    </div>
+      <div class="text-center">
+        <table>
+          <tr>
+            <td v-for='(categories, index) in allCategories' :key="index">
+              <v-combobox style="width:150px"
+              v-show='showCategories[index]' v-model="categories.selectedCategory" :items="categories.categories"
+              item-text="name" label="Choice Category"
+              @change="selectItem(index, categories.selectedCategory)" return-object>
+              </v-combobox>
+            </td>
+          </tr>
+        </table>
+      </div>
   </span>
 </template>
 
 <script>
-import commonCodeService from '../../services/commonCodeService'
+import commonCodeService from '@/services/commonCodeService'
 
 export default {
-  props: {
-    codeType: {},
-    selectedCategory1: {} // 초기 codeTypeId:0, parentId:0
-  },
   data: () => ({
-    selectedCategory: null,
-    items: []
+    root: { id: 0 },
+    allCategories: [
+      { selectedCategory: null, categories: [] },
+      { selectedCategory: null, categories: [] },
+      { selectedCategory: null, categories: [] }
+    ],
+    showCategories: [
+      true, false, false
+    ]
   }),
-  watch: {
-    selectedCategory: function () {
-      this.ss()
-    }
-  },
   async mounted () {
     try {
-      if ((this.selectedCategory1.codeTypeId + 1) === this.codeType.id) {
-        this.selectedCategory1.codeTypeId += 1
-        const respCommonCode = await commonCodeService.getCategories(this.selectedCategory1)
-        this.items = respCommonCode.data
-      }
+      const respCommonCode = await commonCodeService.getCategories(this.root)
+      this.allCategories[0].categories = respCommonCode.data
     } catch (error) {
       this.errored = true
     } finally {
@@ -48,9 +42,31 @@ export default {
     }
   },
   methods: {
-    ss: function () {
-      this.$emit('ss', this.selectedCategory)
-      alert(this.codeType.id + '데이터 전달')
+    selectItem: async function (selectedAllCategoriesIndex, selectedCategory) {
+      const mainIndex = 0
+      const middleIndex = 1
+      const subIndex = 2
+
+      if (selectedAllCategoriesIndex === mainIndex) {
+        this.allCategories[middleIndex].selectedCategory = null
+        console.log(selectedCategory.id)
+        const respCommonCode = await commonCodeService.getCategories(selectedCategory)
+        this.allCategories[middleIndex].categories = respCommonCode.data
+        this.showCategories[middleIndex] = true
+        this.showCategories[subIndex] = false
+      } else if (selectedAllCategoriesIndex === middleIndex) {
+        this.allCategories[subIndex].selectedCategory = null
+        const respCommonCode = await commonCodeService.getCategories(selectedCategory)
+        this.allCategories[subIndex].categories = respCommonCode.data
+        this.showCategories[subIndex] = true
+      }
+
+      if (this.allCategories[middleIndex].categories.length === 0) {
+        this.showCategories[middleIndex] = false
+        this.showCategories[subIndex] = false
+      } else if (this.allCategories[subIndex].categories.length === 0) {
+        this.showCategories[subIndex] = false
+      }
     }
   }
 }
