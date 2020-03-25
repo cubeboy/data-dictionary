@@ -2,10 +2,10 @@
 <div>
   <div>
     <div style="text-align:center" id="filter">
-      <Category/>
+      <Category @getSelectedCategories='getSelectedCategories'/>
       <div class="row">
-        <v-text-field v-model="word" label="Search" outlined v-on:keyup.enter='submit()'></v-text-field>
-        <router-link :to=" '/common_code/' + word"><v-chip class="ma-2">Search</v-chip></router-link>
+        <v-text-field v-model="params.searchVal" label="Search" outlined v-on:keyup.enter='submit()' ></v-text-field>
+        <router-link :to=" '/term/' + params.searchVal"><v-chip class="ma-2">Search</v-chip></router-link>
       </div>
     </div>
   </div>
@@ -18,7 +18,7 @@ import Category from '@/components/Category.vue'
 export default {
   data: function () {
     return {
-      word: null
+      params: {}
     }
   },
   async mounted () {
@@ -33,11 +33,11 @@ export default {
     Category
   },
   methods: {
-    conveySelectedItem (selectedItem) {
-      console.log('parent>')
-    },
     submit () {
-      location.href = 'common_code/' + this.word
+      location.href = '/term/' + this.term
+    },
+    getSelectedCategories (selectedCategories) {
+      this.params = selectedCategories
     }
   }
 }
