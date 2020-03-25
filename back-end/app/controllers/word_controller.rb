@@ -20,14 +20,9 @@ class WordController < ApplicationController
         render json: word.to_json
     end
 
-
-    def new
-        word = Word.new
-    end
-
     def create
         word = Word.new(word_params)
-
+        word.save
         # if word.save
         #     redirect_to word
         # else
@@ -37,7 +32,7 @@ class WordController < ApplicationController
 
     def update
         word = Word.find(params[:id])
-
+        word.update(word_params)
         # if word.update(word_params)
         #     redirect_to word
         # else
@@ -54,7 +49,7 @@ class WordController < ApplicationController
 
     private
         def word_params
-            params.require(:word).permit(:name, :engName)
+            params.require(:word).permit(:name, :engName, :shortEng, :entity, :column, :javascript, :wordClass, :wordClassMember, :paramValue)
         end
 
 

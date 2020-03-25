@@ -41,4 +41,31 @@ class WordControllerTest < ActionDispatch::IntegrationTest
     assert_equal searchId, word["id"], "Word Controller Search find id - id Fail"
   end
 
+  test "Word Controller create test" do
+    assert_difference('Word.count') do
+      post url, params: { word: { name: searchKorName, engName: searchEncName, shortEng: 'Ins', entity: 'T_Ins', column: 'ins', javascript: 'ins',
+        wordClass: 'Ins', wordClassMember: 'ins', paramValue: 'ins' } }
+    end
+    word = Word.last
+    assert_equal searchKorName, word.name, 'Word Controller update - name Fail'
+    assert_equal searchEncName, word.engName, 'Word Controller update - engName Fail'
+    # assert_redirected_to word_path(Word.last)
+  end
+
+  test "Word Controller update test" do
+    patch url + "/#{searchId}", params: { word: { name: searchKorName, engName: searchEncName } }
+    word = Word.find(searchId)
+    assert_equal searchKorName, word.name, 'Word Controller update - name Fail'
+    assert_equal searchEncName, word.engName, 'Word Controller update - engName Fail'
+    # assert_redirected_to article_path(word)
+  end
+
+  test "Word Controller destroy test" do
+    assert_difference('Word.count', -1) do
+      delete url + "/#{searchId}"
+    end
+    assert_equal false, Word.exists?(searchId), '"Word Controller destroy - destroy Fail'
+    # assert_redirected_to word_path
+  end
+
 end
