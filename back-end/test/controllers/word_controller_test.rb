@@ -8,7 +8,8 @@ class WordControllerTest < ActionDispatch::IntegrationTest
 
   test "Word Controller Search all test" do
     assert_generates url, {controller: url, action: 'index'}
-    getWord = get url
+    param = {search: ''}
+    getWord = get url, params: {wordParam: param}
     assert_equal 200, getWord, "Word Controller Search all get url Error"
     assert_response :success
     words = JSON.parse(@response.body)
@@ -16,7 +17,9 @@ class WordControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Word Controller method getWords wordParam test" do
-    getWord = get url, params: {search: searchKorName}
+    assert_generates url, {controller: url, action: 'index'}
+    param = {search: searchKorName}
+    getWord = get url, params: {wordParam: param}
     assert_equal 200, getWord, "Word Controller method getWords wordParam get url searchKorName Error"
     assert_response :success
     words = JSON.parse(@response.body)
@@ -24,7 +27,8 @@ class WordControllerTest < ActionDispatch::IntegrationTest
       assert (word['name'].upcase.include? searchKorName.upcase) || (word['engName'].upcase.include? searchKorName.upcase), 'Word Controller method getWords wordParam - searchKorName Fail'
     end
 
-    getWord = get url, params: {search: searchEncName}
+    param = {search: searchEncName}
+    getWord = get url, params: {wordParam: param}
     assert_equal 200, getWord, "Word Controller method getWords wordParam url searchEncName Error"
     assert_response :success
     words = JSON.parse(@response.body)
@@ -43,8 +47,9 @@ class WordControllerTest < ActionDispatch::IntegrationTest
 
   test "Word Controller create test" do
     assert_difference('Word.count') do
-      post url, params: { word: { name: searchKorName, engName: searchEncName, shortEng: 'Ins', entity: 'T_Ins', column: 'ins', javascript: 'ins',
-        wordClass: 'Ins', wordClassMember: 'ins', paramValue: 'ins' } }
+      param = { name: searchKorName, engName: searchEncName, shortEng: 'Ins', entity: 'T_Ins', column: 'ins', javascript: 'ins',
+        wordClass: 'Ins', wordClassMember: 'ins', paramValue: 'ins' }
+      post url, params: { wordParam: param }
     end
     word = Word.last
     assert_equal searchKorName, word.name, 'Word Controller update - name Fail'
@@ -53,7 +58,8 @@ class WordControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "Word Controller update test" do
-    patch url + "/#{searchId}", params: { word: { name: searchKorName, engName: searchEncName } }
+    param = { name: searchKorName, engName: searchEncName }
+    patch url + "/#{searchId}", params: { wordParam: param }
     word = Word.find(searchId)
     assert_equal searchKorName, word.name, 'Word Controller update - name Fail'
     assert_equal searchEncName, word.engName, 'Word Controller update - engName Fail'
@@ -64,7 +70,7 @@ class WordControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Word.count', -1) do
       delete url + "/#{searchId}"
     end
-    assert_equal false, Word.exists?(searchId), '"Word Controller destroy - destroy Fail'
+    assert_equal false, Word.exists?(searchId), 'Word Controller destroy - destroy Fail'
     # assert_redirected_to word_path
   end
 
