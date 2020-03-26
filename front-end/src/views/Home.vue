@@ -34,10 +34,10 @@
     </v-navigation-drawer>
       <v-container fluid class="grey lighten-4 fill-height">
         <v-row justify="center" align="center">
-          <SearchCard/>
+          <SearchCard />
         </v-row>
         <v-row justify="center" align="center">
-          <v-data-table :headers="headers" :items="words" :items-per-page="5" class="elevation-1"></v-data-table>
+
         </v-row>
         <v-row justify="center" align="center">
             <div v-if="searchWord == null">
@@ -82,23 +82,7 @@ export default {
       word: '계좌 번호',
       meaning: '은행 등에서 저축이나 대출 상황 등을 기록하고 관리하기 위해 고객에게 부여하는 식별 번호.',
       variables: ['계좌', '번호']
-    },
-    headers: [
-      {
-        text: '한글명',
-        align: 'start',
-        sortable: true,
-        value: 'name'
-      },
-      { text: 'Eng', value: 'engName' },
-      { text: 'short-Eng', value: 'shortEng' },
-      { text: 'Entity', value: 'entity' },
-      { text: 'Column', value: 'column' },
-      { text: 'javascript', value: 'javascript' },
-      { text: 'class', value: 'wordClass' },
-      { text: 'class member', value: 'WordClassMember' },
-      { text: 'param value', value: 'paramValue' }
-    ]
+    }
   }),
   mounted () {
     this.searchWord = this.$route.params.word
