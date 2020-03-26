@@ -17,9 +17,6 @@
           </template>
         </v-data-table>
       </div>
-      <div>
-        <v-data-table :headers="headers" :items="words" :items-per-page="5" class="elevation-1"></v-data-table>
-      </div>
     </div>
   </div>
   </div>
