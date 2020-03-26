@@ -61,27 +61,22 @@ export default {
     source: String
   },
   methods: {
-    searchWord: function (word) {
-      const respCommonCode = wordService.getWordByParam(word)
-      this.words = respCommonCode.data
-      // this.allCategories[middleIndex].selectedCategory = null
-      // console.log(selectedCategory.id)
-      // const respCommonCode = await commonCodeService.getCategories(selectedCategory)
-      // this.allCategories[middleIndex].categories = respCommonCode.data
-      // this.showCategories[middleIndex] = true
-    //   wordService.getWordByParam(word)
-    //     .then(data => {
-    //       this.words = data
-    //     })
-    //     .catch(error => {
-    //       this.errored = true
-    //       console.log(error.message)
-    //     })
-    //     .finally(() => this.loading = false)
+    searchWord: async function (word) {
+      try {
+        this.param.search = word.trim()
+        const respWord = await wordService.getWordByParam(this.param)
+        this.words = respWord.data
+      } catch (error) {
+        this.errored = true
+        console.log(error.message)
+      } finally {
+        this.loading = false
+      }
     }
   },
   data: () => ({
     drawer: null,
+    word: '',
     items: [
       { icon: 'lightbulb_outline', text: 'Notes' },
       { icon: 'touch_app', text: 'Reminders' },
@@ -98,6 +93,9 @@ export default {
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
     ],
+    param: {
+      search: ''
+    },
     headers: [
       {
         text: '한글명',
@@ -111,22 +109,10 @@ export default {
       { text: 'Column', value: 'column' },
       { text: 'javascript', value: 'javascript' },
       { text: 'class', value: 'wordClass' },
-      { text: 'class member', value: 'WordClassMember' },
+      { text: 'class member', value: 'wordClassMember' },
       { text: 'param value', value: 'paramValue' }
     ],
-    words: [
-      {
-        name: '',
-        engName: '',
-        shortEng: '',
-        entity: '',
-        column: '',
-        javascript: '',
-        wordClass: '',
-        WordClassMember: '',
-        paramValue: ''
-      }
-    ]
+    words: []
   })
 }
 </script>
