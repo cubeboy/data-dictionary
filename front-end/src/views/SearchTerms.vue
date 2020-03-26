@@ -2,7 +2,7 @@
   <v-app id="keep">
     <v-app-bar app clipped-left color="amber">
       <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <div class="title ml-3 mr-5 align-center justify-center">메인화면</div>
+      <div class="title ml-3 mr-5 align-center justify-center">용어검색</div>
     </v-app-bar>
 
     <v-navigation-drawer v-model="drawer" app clipped color="grey lighten-4">
@@ -33,25 +33,27 @@
       </v-list>
     </v-navigation-drawer>
       <v-container fluid class="grey lighten-4 fill-height">
-
         <v-row justify="center" align="center">
-          <router-link :to="'/term'">
-          <v-btn class="ma-2" outlined color="indigo">용어검색 Go</v-btn>
-          </router-link>
+          <SearchCard />
         </v-row>
-
+        <v-row justify="center" align="center">
+        </v-row>
+        <!-- <v-row justify="center" align="center">
+          <DiscriptionCard/>
+        </v-row> -->
       </v-container>
   </v-app>
 </template>
 
 <script>
+import SearchCard from '@/components/SearchCard.vue'
+// import DiscriptionCard from '@/components/DiscriptionCard.vue'
 export default {
   props: {
     source: String
   },
   data: () => ({
-    drawer: null,
-    searchWord: null,
+    drawer: false,
     items: [
       { icon: 'lightbulb_outline', text: 'Notes' },
       { icon: 'touch_app', text: 'Reminders' },
@@ -68,7 +70,10 @@ export default {
       { icon: 'phonelink', text: 'App downloads' },
       { icon: 'keyboard', text: 'Keyboard shortcuts' }
     ]
-  })
+  }),
+  components: {
+    SearchCard
+  }
 }
 </script>
 
