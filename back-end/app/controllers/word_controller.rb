@@ -1,12 +1,13 @@
 class WordController < ApplicationController
     def index
         words = []
-        if(params)
-            begin
-                wordParam = JSON.parse(params, {symbolize_names: true})
-            rescue
-                wordParam = params
-            end
+        begin
+            wordParam = JSON.parse(params[:wordParam], {symbolize_names: true})
+        rescue
+            wordParam = params[:wordParam]
+        end
+
+        if(!wordParam[:search].empty?)
             words = Word.getWords wordParam
         else
             words = Word.all
@@ -49,7 +50,7 @@ class WordController < ApplicationController
 
     private
         def word_params
-            params.require(:word).permit(:name, :engName, :shortEng, :entity, :column, :javascript, :wordClass, :wordClassMember, :paramValue)
+            params.require(:wordParam).permit(:name, :engName, :shortEng, :entity, :column, :javascript, :wordClass, :wordClassMember, :paramValue)
         end
 
 
