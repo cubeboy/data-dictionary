@@ -1,90 +1,92 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
 1st:
   id: 1
   codeTypeId: 1
-  name: '뷰티'
-  engName: 'beauty'
+  name: '금융'
+  engName: 'finance'
   parentId: 0
 
 2st:
   id: 2
   codeTypeId: 1
-  name: '식품'
-  engName: 'food'
+  name: '전자상거래'
+  engName: 'electronic commerce'
   parentId: 0
 
 3st:
   id: 3
-  codeTypeId: 2
-  name: '건강식품'
-  engName: 'health food'
-  parentId: 2
+  codeTypeId: 1
+  name: '공장자동화'
+  engName: 'factory auto'
+  parentId: 0
 
 4st:
   id: 4
   codeTypeId: 2
-  name: '스킨케어'
-  engName: 'skin care'
+  name: '은행'
+  engName: 'bank'
   parentId: 1
 
 5st:
   id: 5
   codeTypeId: 2
-  name: '메이크업'
-  engName: 'makeup'
+  name: '보험'
+  engName: 'insurance'
   parentId: 1
 
 6st:
   id: 6
   codeTypeId: 2
-  name: '향수'
-  engName: 'perfume'
+  name: '카드'
+  engName: 'card'
   parentId: 1
 
 7st:
   id: 7
   codeTypeId: 2
-  name: '과일'
-  engName: 'fruit'
+  name: 'g마켓'
+  engName: 'Gmarket'
   parentId: 2
 
 8st:
   id: 8
   codeTypeId: 2
-  name: '채소'
-  engName: 'vegetable'
+  name: '옥션'
+  engName: 'auction'
   parentId: 2
 
 9st:
   id: 9
   codeTypeId: 3
-  name: '영양제'
-  engName: 'nutrients'
+  name: '여신'
+  engName: 'credit'
   parentId: 3
 
 10st:
   id: 10
   codeTypeId: 3
-  name: '기초화장품'
-  engName: 'basic cosmetics'
+  name: '수신'
+  engName: 'reception'
   parentId: 4
 
 11st:
   id: 11
   codeTypeId: 3
-  name: '클랜징'
-  engName: 'cleansing'
+  name: '인터넷 뱅킹'
+  engName: 'e-bank'
   parentId: 4
 
 12st:
   id: 12
   codeTypeId: 3
-  name: '아이 메이크업'
-  engName: 'eye makeup'
+  name: '생명보험'
+  engName: 'life insurance'
   parentId: 5
 
 13st:
   id: 13
   codeTypeId: 3
-  name: '립 메이크업'
-  engName: 'lip makeup'
+  name: '운전자보험'
+  engName: 'driver insurance'
   parentId: 5
