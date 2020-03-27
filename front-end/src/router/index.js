@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Word from '../views/word/word.vue'
+import WordShow from '../views/word/wordShow.vue'
 import Term from '../views/SearchTerms.vue'
 
 Vue.use(VueRouter)
@@ -18,10 +19,15 @@ const routes = [
     component: Word
   },
   {
+    path: '/wordShow/',
+    name: 'WordShow',
+    component: WordShow
+  },
+  {
     path: '/term/',
     name: 'SearchTerm',
     component: Term
-  }
+  },
 ]
 
 const router = new VueRouter({

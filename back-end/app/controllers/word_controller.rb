@@ -22,36 +22,29 @@ class WordController < ApplicationController
     end
 
     def create
-        word = Word.new(word_params)
+        begin
+            wordParam = JSON.parse(params[:wordParam], {symbolize_names: true})
+        rescue
+            wordParam = params[:wordParam]
+        end
+
+        word = Word.new(wordParam)
         word.save
-        # if word.save
-        #     redirect_to word
-        # else
-        #     render 'new'
-        # end
     end
 
     def update
+        begin
+            wordParam = JSON.parse(params[:wordParam], {symbolize_names: true})
+        rescue
+            wordParam = params[:wordParam]
+        end
+
         word = Word.find(params[:id])
-        word.update(word_params)
-        # if word.update(word_params)
-        #     redirect_to word
-        # else
-        #     render 'edit'
-        # end
+        word.update(wordParam)
     end
 
     def destroy
         word = Word.find(params[:id])
         word.destroy
-
-        # redirect_to word_path
     end
-
-    private
-        def word_params
-            params.require(:wordParam).permit(:name, :engName, :shortEng, :entity, :column, :javascript, :wordClass, :wordClassMember, :paramValue)
-        end
-
-
 end
