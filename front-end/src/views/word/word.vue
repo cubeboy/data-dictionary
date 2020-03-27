@@ -47,7 +47,57 @@
           </v-col>
         </v-row>
       </div>
-      <v-data-table :headers="headers" :items="words" :items-per-page="5" class="elevation-1"></v-data-table>
+
+      <v-data-table v-model="selected" :headers="headers" :items="words" :items-per-page="10" sort-by="calories" class="elevation-1" @click:row="show">
+
+        <template v-slot:top>
+          <v-toolbar flat color="white">
+            <v-spacer></v-spacer>
+            <v-dialog v-model="dialog" max-width="350px">
+              <template v-slot:activator="{ on }">
+                <v-btn color="primary" dark class="mb-2" v-on="on">New Item</v-btn>
+              </template>
+              <v-card>
+                <v-card-title>
+                  <span class="headline">{{ formTitle }}</span>
+                </v-card-title>
+                <v-card-text>
+                  <v-container>
+                    <v-row>
+                      <v-col cols="12" md="12">
+                        <v-text-field v-model="editedItem.name" label="한글명"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" md="12">
+                        <v-text-field v-model="editedItem.engName" label="Eng"></v-text-field>
+                      </v-col>
+                      <v-col cols="12" md="12">
+                        <v-text-field v-model="editedItem.shortEng" label="short-Eng"></v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="blue darken-1" text @click="close">Cancel</v-btn>
+                  <v-btn color="blue darken-1" text @click="save">Save</v-btn>
+                </v-card-actions>
+              </v-card>
+            </v-dialog>
+          </v-toolbar>
+        </template>
+
+        <template v-slot:item.actions="{ item }">
+          <v-icon small class="mr-2" @click="editItem(item)">
+            mdi-pencil
+          </v-icon>
+          <v-icon small @click="deleteItem(item)">
+            mdi-delete
+          </v-icon>
+        </template>
+
+      </v-data-table>
+
     </div>
 
   </v-app>
@@ -60,26 +110,103 @@ export default {
   props: {
     source: String
   },
+  computed: {
+    formTitle () {
+      return this.editedIndex === -1 ? 'New Word' : 'Edit Word'
+    }
+  },
+  watch: {
+    dialog (val) {
+      val || this.close()
+    }
+  },
   methods: {
     searchWord: async function (word) {
       try {
         this.param.search = word.trim()
-        const respWord = await wordService.getWordByParam(this.param)
-        this.words = respWord.data
+        const respWords = await wordService.getWordByParam(this.param)
+        this.words = respWords.data
       } catch (error) {
         this.errored = true
         console.log(error.message)
       } finally {
         this.loading = false
       }
+    },
+    show (item) {
+      if (event.target.classList.contains('btn__content')) return
+      if (event.target.type === 'button') return
+      this.$router.push({ name: 'WordShow', params: { id: item.id } })
+    },
+    editItem (item) {
+      this.editedIndex = this.words.indexOf(item)
+      this.editedItem = Object.assign({}, item)
+      this.dialog = true
+    },
+    async deleteItem (item) {
+      // const index = this.words.indexOf(item)
+      confirm('Are you sure you want to delete this item?') && await wordService.destroyWord(item.id) && this.searchWord(this.word)
+    },
+    close () {
+      this.dialog = false
+      setTimeout(() => {
+        this.editedItem = Object.assign({}, this.defaultItem)
+        this.editedIndex = -1
+      }, 300)
+    },
+    async save () {
+      if (this.editedIndex > -1) {
+        try {
+          const strShoreEng = this.editedItem.shortEng
+          this.editedItem.entity = 'T_' + strShoreEng
+          this.editedItem.column = this.getLowerCase(strShoreEng)
+          this.editedItem.javascript = this.getLowerCase(strShoreEng)
+          this.editedItem.wordClass = strShoreEng
+          this.editedItem.wordClassMember = this.getLowerCase(strShoreEng)
+          this.editedItem.paramValue = this.getLowerCase(strShoreEng)
+
+          await wordService.updateWord(this.editedItem)
+          this.searchWord(this.word)
+        } catch (error) {
+          this.errored = true
+          console.log(error.message)
+        } finally {
+          this.loading = false
+        }
+      } else {
+        try {
+          const strShoreEng = this.editedItem.shortEng
+          this.editedItem.entity = 'T_' + strShoreEng
+          this.editedItem.column = this.getLowerCase(strShoreEng)
+          this.editedItem.javascript = this.getLowerCase(strShoreEng)
+          this.editedItem.wordClass = strShoreEng
+          this.editedItem.wordClassMember = this.getLowerCase(strShoreEng)
+          this.editedItem.paramValue = this.getLowerCase(strShoreEng)
+
+          await wordService.createWord(this.editedItem)
+          this.searchWord(this.word)
+        } catch (error) {
+          this.errored = true
+          console.log(error.message)
+        } finally {
+          this.loading = false
+        }
+      }
+      this.close()
+    },
+    getLowerCase (strShoreEng) {
+      return strShoreEng.charAt(0).toLowerCase() + strShoreEng.slice(1)
     }
+
   },
   data: () => ({
     drawer: null,
     word: '',
+    selected: [],
+    dialog: false,
     items: [
-      { icon: 'lightbulb_outline', text: 'Notes' },
-      { icon: 'touch_app', text: 'Reminders' },
+      { icon: 'lightbulb-outline', text: 'Notes' },
+      { icon: 'cursor-pointer', text: 'Reminders' },
       { divider: true },
       { heading: 'Labels' },
       { icon: 'add', text: 'Create new label' },
@@ -110,9 +237,45 @@ export default {
       { text: 'javascript', value: 'javascript' },
       { text: 'class', value: 'wordClass' },
       { text: 'class member', value: 'wordClassMember' },
-      { text: 'param value', value: 'paramValue' }
+      { text: 'param value', value: 'paramValue' },
+      { text: 'Actions', value: 'actions', sortable: false }
     ],
+    editedIndex: -1,
+    editedItem: {
+      name: '',
+      engName: '',
+      shortEng: '',
+      entity: '',
+      column: '',
+      javascript: '',
+      wordClass: '',
+      wordClassMember: '',
+      paramValue: ''
+    },
+    defaultItem: {
+      name: '',
+      engName: '',
+      shortEng: '',
+      entity: '',
+      column: '',
+      javascript: '',
+      wordClass: '',
+      wordClassMember: '',
+      paramValue: ''
+    },
     words: []
-  })
+  }),
+  async mounted () {
+    try {
+      // this.param.search = word.trim()
+      const respWords = await wordService.getWordByParam(this.param)
+      this.words = respWords.data
+    } catch (error) {
+      this.errored = true
+      console.log(error.message)
+    } finally {
+      this.loading = false
+    }
+  }
 }
 </script>
